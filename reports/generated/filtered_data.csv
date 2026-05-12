@@ -1,0 +1,13 @@
+date,region,country,city,store,category,revenue,orders,active_users,conversions,sessions,profit
+2026-03-03,Asia Pacific,India,Bengaluru,Indiranagar Store,Software,20150,232,1010,158,1500,7010
+2026-02-11,Europe,Germany,Berlin,Mitte Store,Hardware,17120,183,710,118,1100,5340
+2026-01-08,North America,United States,Boston,Back Bay Store,Hardware,13250,141,570,88,920,3980
+2026-02-04,Europe,United Kingdom,London,City Hub,Software,22400,248,940,166,1410,7600
+2026-04-12,Europe,Spain,Madrid,Sol Store,Hardware,14620,151,610,93,980,4210
+2026-01-03,North America,United States,New York,Manhattan Flagship,Software,18420,219,860,137,1240,6120
+2026-02-18,Europe,France,Paris,Opera Store,Services,19350,205,790,131,1220,6425
+2026-04-05,North America,United States,Seattle,South Lake Store,Software,21110,237,930,154,1365,7350
+2026-04-19,Asia Pacific,Singapore,Singapore,Marina Store,Services,23280,254,990,171,1440,8120
+2026-03-16,Asia Pacific,Australia,Sydney,George Street Store,Services,16440,177,695,109,1025,5215
+2026-03-09,Asia Pacific,Japan,Tokyo,Shibuya Store,Hardware,18770,194,830,122,1215,5905
+2026-01-15,North America,Canada,Toronto,Queen Street Store,Services,15880,176,640,104,1020,5120

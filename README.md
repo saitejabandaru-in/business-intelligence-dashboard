@@ -80,7 +80,7 @@ Designed for **decision-makers, analysts, and business teams**.
 
 ## 🧬 System Workflow
 
-
+```text
 Data Sources (SQL / API / Files)
 ↓
 Data Connectors Layer
@@ -92,15 +92,13 @@ KPI Computation & Aggregation
 Interactive Dashboard (Streamlit)
 ↓
 Reporting Engine (PDF + Email)
-
-```id="biflow1"
+```
 
 ---
 
 ## 🗂️ Project Structure
 
-```
-
+```text
 data/
 ├── connectors/
 │   ├── sql_connector.py
@@ -117,11 +115,15 @@ dashboard/
 
 reports/
 ├── pdf_generator.py
-└── email_sender.py
+├── email_sender.py
+├── export_outputs.py
+└── generated/
+    ├── filtered_data.csv
+    └── bi_executive_summary.pdf
 
 tests/
-
-````id="bistruct1"
+└── test_kpis.py
+```
 
 ---
 
@@ -129,13 +131,21 @@ tests/
 
 ### Install dependencies
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-````
+```
 
 ### Run dashboard
 
 ```bash id="birun1"
 streamlit run dashboard/app.py
+```
+
+### Regenerate committed sample outputs
+
+```bash
+python reports/export_outputs.py
 ```
 
 ---

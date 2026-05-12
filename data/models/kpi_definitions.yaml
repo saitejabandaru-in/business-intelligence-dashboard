@@ -1,0 +1,23 @@
+kpis:
+  revenue:
+    label: Revenue
+    column: revenue
+    aggregation: sum
+    format: currency
+  conversion_rate:
+    label: Conversion Rate
+    numerator: conversions
+    denominator: sessions
+    aggregation: ratio
+    format: percent
+  active_users:
+    label: Active Users
+    column: active_users
+    aggregation: sum
+    format: integer
+  profit_margin:
+    label: Profit Margin
+    numerator: profit
+    denominator: revenue
+    aggregation: ratio
+    format: percent
