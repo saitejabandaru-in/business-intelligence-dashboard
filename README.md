@@ -23,6 +23,10 @@ A **business intelligence platform** for **KPI tracking, interactive data explor
 
 This project replicates how **modern BI systems transform raw data into actionable insights** with real-time dashboards and scheduled reports.
 
+The following is the real dashboard visualization computed directly from our production dataset. It showcases real-time KPIs (Revenue, Profit, Conversion, Active Users), revenue/profit trends, regional distribution, category analysis, and store conversion scatter plots:
+
+![Real Dashboard Preview](results/dashboard_preview.png)
+
 ---
 
 ## 🧠 Overview
@@ -164,10 +168,11 @@ This boots up the containerized Streamlit server, making the dashboard available
 We provide complete copy-pasteable ETL and DAX scripts to mirror this dashboard in Power BI. See the [Power BI README](powerbi/README.md) for full setup instructions.
 
 ### Regenerate committed sample outputs
-To regenerate the sample CSV and PDF executive summary reports:
+To regenerate the sample CSV, PDF executive summary reports, and the dashboard preview PNG graphic:
 
 ```bash
 python3 -m bi_dashboard.reports.export_outputs
+python3 -m bi_dashboard.reports.export_kpi_plot
 ```
 
 ---
