@@ -6,7 +6,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-from dashboard.kpi_cards import format_kpi
+from bi_dashboard.dashboard.kpi_cards import format_kpi
 
 
 def build_executive_summary(frame: pd.DataFrame, kpis: dict) -> bytes:

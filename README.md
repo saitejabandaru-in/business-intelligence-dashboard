@@ -129,23 +129,27 @@ tests/
 
 ## 🚀 Quick Start
 
-### Install dependencies
+### Install the package
+You can install this project directly as a Python package in your local virtual environment:
+
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install .
 ```
 
 ### Run dashboard
+Once installed, you can launch the interactive dashboard with a simple, convenient command-line interface:
 
 ```bash id="birun1"
-streamlit run dashboard/app.py
+bi-dashboard
 ```
 
 ### Regenerate committed sample outputs
+To regenerate the sample CSV and PDF executive summary reports:
 
 ```bash
-python reports/export_outputs.py
+python3 -m bi_dashboard.reports.export_outputs
 ```
 
 ---

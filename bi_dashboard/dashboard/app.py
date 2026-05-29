@@ -1,21 +1,17 @@
 from pathlib import Path
-import sys
 
 import pandas as pd
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+from bi_dashboard.dashboard.charts import category_mix, conversion_scatter, drilldown_treemap, revenue_by_region, revenue_trend
+from bi_dashboard.dashboard.filters import apply_filters
+from bi_dashboard.dashboard.kpi_cards import compute_kpis, format_kpi, load_kpi_definitions
+from bi_dashboard.data.connectors.file_connector import load_file
+from bi_dashboard.reports.pdf_generator import build_executive_summary
 
-from dashboard.charts import category_mix, conversion_scatter, drilldown_treemap, revenue_by_region, revenue_trend
-from dashboard.filters import apply_filters
-from dashboard.kpi_cards import compute_kpis, format_kpi, load_kpi_definitions
-from data.connectors.file_connector import load_file
-from reports.pdf_generator import build_executive_summary
-
-DATA_PATH = ROOT / "data" / "sample_sales.csv"
-KPI_PATH = ROOT / "data" / "models" / "kpi_definitions.yaml"
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+DATA_PATH = PACKAGE_ROOT / "data" / "sample_sales.csv"
+KPI_PATH = PACKAGE_ROOT / "data" / "models" / "kpi_definitions.yaml"
 
 
 @st.cache_data
