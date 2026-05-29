@@ -99,31 +99,38 @@ Reporting Engine (PDF + Email)
 ## 🗂️ Project Structure
 
 ```text
-data/
-├── connectors/
-│   ├── sql_connector.py
-│   ├── api_connector.py
-│   └── file_connector.py
-└── models/
-└── kpi_definitions.yaml
+bi_dashboard/              # Namespaced package root
+├── cli.py                 # CLI launcher
+├── dashboard/             # Streamlit app and views
+│   ├── app.py
+│   ├── charts.py
+│   ├── filters.py
+│   └── kpi_cards.py
+├── data/                  # Data source connectors and models
+│   ├── sample_sales.csv
+│   ├── connectors/
+│   │   ├── api_connector.py
+│   │   ├── file_connector.py
+│   │   └── sql_connector.py
+│   └── models/
+│       └── kpi_definitions.yaml
+└── reports/               # Automated reporting pipelines
+    ├── email_sender.py
+    ├── export_outputs.py
+    ├── pdf_generator.py
+    └── generated/
+        ├── filtered_data.csv
+        └── bi_executive_summary.pdf
 
-dashboard/
-├── app.py
-├── kpi_cards.py
-├── charts.py
-└── filters.py
+powerbi/                   # Power BI integrations
+├── dax_measures.dax       # Production DAX measures
+├── power_query_etl.m      # Power Query M ETL script
+└── README.md              # Setup instructions
 
-reports/
-├── pdf_generator.py
-├── email_sender.py
-├── export_outputs.py
-└── generated/
-    ├── filtered_data.csv
-    └── bi_executive_summary.pdf
-
-tests/
+tests/                     # Test suite
 └── test_kpis.py
 ```
+
 
 ---
 
@@ -144,6 +151,17 @@ Once installed, you can launch the interactive dashboard with a simple, convenie
 ```bash id="birun1"
 bi-dashboard
 ```
+
+### Docker Deployment
+Run the entire application locally in a container with a single command:
+
+```bash
+docker compose up --build
+```
+This boots up the containerized Streamlit server, making the dashboard available at `http://localhost:8501`.
+
+### Power BI Desktop Integration
+We provide complete copy-pasteable ETL and DAX scripts to mirror this dashboard in Power BI. See the [Power BI README](powerbi/README.md) for full setup instructions.
 
 ### Regenerate committed sample outputs
 To regenerate the sample CSV and PDF executive summary reports:

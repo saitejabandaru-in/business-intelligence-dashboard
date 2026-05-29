@@ -1,0 +1,74 @@
+-- ============================================================================
+-- Enterprise DAX Measures for the Business Intelligence Dashboard
+-- Author: Sai Teja Bandaru
+-- ============================================================================
+
+-- 1. Total Revenue
+Total Revenue = SUM(sample_sales[revenue])
+
+-- 2. Total Profit
+Total Profit = SUM(sample_sales[profit])
+
+-- 3. Total Active Users
+Total Active Users = SUM(sample_sales[active_users])
+
+-- 4. Total Orders
+Total Orders = SUM(sample_sales[orders])
+
+-- 5. Total Conversions
+Total Conversions = SUM(sample_sales[conversions])
+
+-- 6. Total Sessions
+Total Sessions = SUM(sample_sales[sessions])
+
+-- 7. Conversion Rate (Safe Division)
+Conversion Rate = DIVIDE([Total Conversions], [Total Sessions], 0)
+
+-- 8. Profit Margin (Safe Division)
+Profit Margin = DIVIDE([Total Profit], [Total Revenue], 0)
+
+-- 9. Month-over-Month (MoM) Revenue Growth Rate
+MoM Revenue Growth = 
+VAR CurrentRevenue = [Total Revenue]
+VAR PreviousMonthRevenue = 
+    CALCULATE(
+        [Total Revenue],
+        DATEADD('Calendar'[Date], -1, MONTH)
+    )
+RETURN
+    DIVIDE(CurrentRevenue - PreviousMonthRevenue, PreviousMonthRevenue, 0)
+
+-- 10. Year-to-Date (YTD) Revenue
+YTD Revenue = 
+TOTALYTD(
+    [Total Revenue],
+    'Calendar'[Date]
+)
+
+-- 11. Rolling 3-Month Average Revenue
+Rolling 3M Avg Revenue = 
+AVERAGEX(
+    DATESINPERIOD(
+        'Calendar'[Date],
+        LASTDATE('Calendar'[Date]),
+        -3,
+        MONTH
+    ),
+    [Total Revenue]
+)
+
+-- 12. Dynamic Calendar Date Table (Calculated Table DAX)
+-- Use: Modeling tab -> New Table
+Calendar = 
+VAR MinDate = MIN(sample_sales[date])
+VAR MaxDate = MAX(sample_sales[date])
+RETURN
+ADDCOLUMNS(
+    CALENDAR(MinDate, MaxDate),
+    "Year", YEAR([Date]),
+    "Month Number", MONTH([Date]),
+    "Month Name", FORMAT([Date], "MMMM"),
+    "Quarter", "Q" & FORMAT([Date], "Q"),
+    "Year-Month", FORMAT([Date], "YYYY-MM"),
+    "Day of Week", FORMAT([Date], "dddd")
+)

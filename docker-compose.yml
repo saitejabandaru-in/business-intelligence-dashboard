@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bi_dashboard_app
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
